@@ -58,7 +58,8 @@ int main()
     firstWeekDayOfMonth = firstTime.tm_wday;
 
     sf::RenderWindow window(sf::VideoMode(800, 600), "Calendar");
-
+    
+    // 리마인더를 파일에서 불러옴
     unordered_map<string, string> reminders;
     loadReminders(reminders, "reminders.txt");
 
@@ -68,11 +69,11 @@ int main()
     sf::Font font;
     if (!font.loadFromFile("fonts/arial.ttf"))
     {
-        cerr << "폰트 로드 실패" << endl;
+        cerr << "Failed to open font" << endl;
         return 1;
     }
 
-    // 오늘의 알림 표시
+    // 오늘의 리마인더 표시
     string todayKey = currentYearMonth + "-" + (currentDay < 10 ? "0" : "") + to_string(currentDay);
     if (reminders.count(todayKey))
     {
@@ -95,6 +96,7 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
 
+            // 날짜를 클릭하면 리마인더 표시
             if (event.type == sf::Event::MouseButtonPressed && event.mouseButton.button == sf::Mouse::Left)
             {
                 int x = event.mouseButton.x;
@@ -111,15 +113,18 @@ int main()
                     inputText.clear();
                 }
             }
-
+            
+            // 키보드 이벤트
             if (event.type == sf::Event::KeyPressed)
             {
+                // esc 누르면 모든 모드 종료
                 if (event.key.code == sf::Keyboard::Escape)
                 {
                     inputActive = false;
                     deleteActive = false;
                     displayActive = false;
                 }
+                // enter 누르면 리마인더 저장
                 else if (inputActive && event.key.code == sf::Keyboard::Enter)
                 {
                     string key = currentYearMonth + "-" + (reminderDay < 10 ? "0" : "") + to_string(reminderDay);
@@ -128,6 +133,7 @@ int main()
                     inputActive = false;
                     displayActive = false;
                 }
+                // enter 누르면 리마인더 삭제
                 else if (deleteActive && event.key.code == sf::Keyboard::Enter)
                 {
                     string key = currentYearMonth + "-" + (reminderDay < 10 ? "0" : "") + to_string(reminderDay);
@@ -136,12 +142,14 @@ int main()
                     deleteActive = false;
                     displayActive = false;
                 }
+                // insert 누르면 입력 모드
                 else if (event.key.code == sf::Keyboard::Insert)
                 {
                     inputActive = true;
                     deleteActive = false;
                     inputText.clear();
                 }
+                // delete 누르면 삭제 모드
                 else if (event.key.code == sf::Keyboard::Delete)
                 {
                     deleteActive = true;
@@ -149,7 +157,7 @@ int main()
                     inputText.clear();
                 }
             }
-
+            // 입력모드에서 텍스트 입력 처리
             if (inputActive && event.type == sf::Event::TextEntered)
             {
                 if (event.text.unicode == '\b' && !inputText.empty())
@@ -165,7 +173,8 @@ int main()
 
         window.clear(sf::Color::White);
         drawCalendar(window, weekDays, months[currentMonth] + " " + to_string(currentYear), firstWeekDayOfMonth, numberOfDays, reminders, currentDay, currentYearMonth);
-
+        
+        // 리마인더 추가
         if (inputActive)
         {
             sf::Text insertText;
@@ -187,10 +196,12 @@ int main()
             inputTextDisplay.setFillColor(sf::Color::Black);
             inputTextDisplay.setPosition(60, window.getSize().y - 150);
             window.draw(inputTextDisplay);
-
+            
+            // 선택된 날짜에 리마인더가 있다면 표시
             displayActive = true;
         }
-
+        
+        // 리마인더 삭제시 메시지 표시
         if (deleteActive)
         {
             sf::Text deleteText;
@@ -201,9 +212,11 @@ int main()
             deleteText.setPosition(50, window.getSize().y - 210);
             window.draw(deleteText);
 
+            // 선택된 날짜에 리마인더가 있다면 표시
             displayActive = true;
         }
 
+        // 리마인더가 있으면 화면에 표시
         if (displayActive) {
             if (!displayReminder.empty())
             {
