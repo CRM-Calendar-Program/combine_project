@@ -1,7 +1,7 @@
 #include <iostream>
+#include <cstdlib>
 #include "data_handler.h"
 #include "calendar.hpp"
-#include <cstdlib>
 
 using namespace std;
 
@@ -27,14 +27,13 @@ int GetSize(string filename)
 
 int main()
 {
-    string filename = "test1.csv";
-    string filename_o = "test2.csv";
+    string filename = "people.csv";
     int size;
 
     size = GetSize(filename);
     DataHandler DB(size);
     DB.ReadCSV(filename);
-    DB.WriteCSV(filename_o);
+    DB.WriteCSV(filename);
 
 //================================
 
