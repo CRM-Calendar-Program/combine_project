@@ -1,7 +1,7 @@
 #include <iostream>
 #include "data_handler.h"
 #include "calendar.hpp"
-#include <Python.h>
+#include <cstdlib>
 
 using namespace std;
 
@@ -231,30 +231,7 @@ int main()
         window.display();
     }
     //===========================python
-    Py_Initialize();
-    PyObject* pName = PyUnicode_DecodeFSDefault("main");
-    PyObject* pModule = PyImport_Import(pName);
-    Py_XDECREF(pName);
-
-    if (pModule != nullptr) {
-        PyObject* pFunc = PyObject_GetAttrString(pModule, "start_process");
-        if (pFunc && PyCallable_Check(pFunc)) {
-            PyObject_CallObject(pFunc, nullptr);
-            Py_XDECREF(pFunc);
-        }
-        else {
-            if (PyErr_Occurred())
-                PyErr_Print();
-            cerr << "Cannot find function 'start_process'" << endl;
-        }
-        Py_XDECREF(pModule);
-    }
-    else {
-        PyErr_Print();
-        cerr << "Failed to load 'main'" << endl;
-    }
-
-    Py_Finalize();
+    system("python main.py");
 
     return 0;
 }
