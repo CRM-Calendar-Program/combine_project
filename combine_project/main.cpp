@@ -64,6 +64,14 @@ int main()
 
     string currentYearMonth = to_string(currentYear) + "-" + (currentMonth + 1 < 10 ? "0" : "") + to_string(currentMonth + 1);
 
+    // 폰트 로드
+    sf::Font font;
+    if (!font.loadFromFile("fonts/arial.ttf"))
+    {
+        cerr << "폰트 로드 실패" << endl;
+        return 1;
+    }
+
     // 오늘의 알림 표시
     string todayKey = currentYearMonth + "-" + (currentDay < 10 ? "0" : "") + to_string(currentDay);
     if (reminders.count(todayKey))

@@ -102,7 +102,7 @@ void drawCalendar(sf::RenderWindow& window, const vector<string>& weekDays, cons
     // 안내 텍스트 표시
     sf::Text instructions;
     instructions.setFont(font);
-    instructions.setString("Insert: 알림 추가  Delete: 알림 삭제  ESC: 취소");
+    instructions.setString("Insert: Create Reminder  Delete: Delete Reminder  ESC: Cancel");
     instructions.setCharacterSize(14);
     instructions.setFillColor(sf::Color::Black);
     instructions.setPosition(50, window.getSize().y - 220);
