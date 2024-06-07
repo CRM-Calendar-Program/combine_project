@@ -144,11 +144,13 @@
     <ClInclude Include="calendar.hpp" />
     <ClInclude Include="client.h" />
     <ClInclude Include="data_handler.h" />
+    <ClInclude Include="display.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="calendar.cpp" />
     <ClCompile Include="client.cpp" />
     <ClCompile Include="data_handler.cpp" />
+    <ClCompile Include="display.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
