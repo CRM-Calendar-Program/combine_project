@@ -24,12 +24,29 @@ void Display::ShowMenu()
 	SetCursorPosition(0, 6);
 	// 오늘의 일정부분 출력
 
+	char selection = 0;
 	while (true)
 	{
-		if (_kbhit)
-		{
-			int ch = _getch();
+		while (!_kbhit()) {}
+		selection = _getch();
 
+		switch (selection)
+		{
+		case '1':
+			ShowClientMenu();
+			break;
+		case '2':
+			ShowMileageMenu();
+			break;
+		case '3':
+			ShowHistoryMenu();
+			break;
+		case '4':
+			DailyMenu();
+			break;
+		default:
+			std::cout << "잘못된 선택입니다. 다시 시도하세요." << std::endl;
+			Sleep(1000);
 		}
 	}
 }
