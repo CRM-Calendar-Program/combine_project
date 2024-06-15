@@ -229,8 +229,9 @@ int main()
 
         window.display();
     }
-    //===========================python
-    system("python main.py");
+    //==google calendar, summary gemini==
+    system("python googleCalendar.py");
+    system("python summaryGemini.py");
 
     return 0;
 }
