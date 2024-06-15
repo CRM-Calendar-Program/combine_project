@@ -11,7 +11,6 @@
 class Display
 {
 private:
-	int center;
 	int box_x = 30;
 	int box_y = 10;
 	DataHandler& DB;
