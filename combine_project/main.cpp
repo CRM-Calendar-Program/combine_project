@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include "data_handler.h"
 #include "calendar.hpp"
+#include "display.h"
 
 using namespace std;
 
@@ -33,6 +34,7 @@ int main()
     size = GetSize(filename);
     DataHandler DB(size);
     DB.ReadCSV(filename);
+    Display display(DB);
     DB.WriteCSV(filename);
 
 //================================
