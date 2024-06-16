@@ -1,5 +1,8 @@
 # combine_project
 
+combine_project <-프로그램 병합
+combine_result <-발표자료
+
 발표자료================================
 최초 발표- 오픈소스전문프로젝트_계획 발표.pptx
 중간 발표- 오픈소스전문프로젝트_중간 발표2.pptx
