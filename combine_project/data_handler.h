@@ -16,7 +16,8 @@ public:
 
 	void ReadCSV(std::string filename);
 	void WriteCSV(std::string filename);
-	void FindClient(std::string birthday);
 	void AddClient();
+	void ModifyClientMileage(int id, int cost, int type);
+	int FindClient(std::string birthday);
 	std::string GetData(int index);
 };

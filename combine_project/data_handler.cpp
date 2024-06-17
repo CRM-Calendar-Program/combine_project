@@ -65,15 +65,24 @@ void DataHandler::WriteCSV(std::string filename)
 	file.close();
 }
 
-void DataHandler::FindClient(std::string birthday)
+int DataHandler::FindClient(std::string birthday)
 {
+	/* 생년월일 중복에 대해 고민할 필요가 있음!!! */
 	for (int i = 0; i < next_pointer; i++)
 		if (clients[i].GetStringData(3) == birthday)
 		{
 			clients[i].PrintInfo();
-			return;
+			return clients[i].GetIntData(id);
 		}
 	std::cout << "Client with birthday " << birthday << " not found" << std::endl;
+	return -1;
+}
+
+void DataHandler::ModifyClientMileage(int id, int cost, int type)
+{
+	if (type == 0) clients[id - 1].SaveMileage(cost);
+	else if (type == 1) clients[id - 1].PayMileage(cost);
+	else std::cout << "Does not type" << std::endl;
 }
 
 void DataHandler::AddClient()

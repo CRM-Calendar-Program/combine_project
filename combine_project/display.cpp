@@ -110,14 +110,76 @@ void Display::ShowClientMenu()
 
 void Display::ShowMileageMenu()
 {
-	std::string birthday;
-
 	CleanDisplay();
 	std::cout << "----------마일리지 관리-----------" << std::endl;
-	std::cout << "고객 생년월일 : ";
-	std::cin >> birthday;
+	std::cout << "1. 마일리지 추가" << std::endl;
+	std::cout << "2. 마일리지 사용" << std::endl;
+	std::cout << std::endl;
 
+	int repeat = -1;
+	char selection = 0;
+	while (repeat == -1)
+	{
+		while (!_kbhit()) {}
+		selection = _getch();
 
+		std::string birthday;
+		switch (selection)
+		{
+		case '1':
+			std::cout << "---------------------------------" << std::endl;
+			std::cout << "찾으려는 고객의 생년월일을 입력해주세요!!" << std::endl;
+			std::cout << "-> 메인으로 돌아가려면 \'m\'를 입력하세요" << std::endl;
+			while (repeat == -1)
+			{
+				std::cout << "\n";
+				std::cout << ">> ";
+				std::cin >> birthday;
+				if (birthday == "m")
+				{
+					repeat = 0;
+					continue;
+				}
+				std::cout << std::endl;
+				repeat = DB.FindClient(birthday);
+				std::cout << std::endl;
+				std::cout << "---------------------------------" << std::endl;
+				int cost = 0;
+				std::cout << "비용을 입력해주세요 >> ";
+				std::cin >> cost;
+				DB.ModifyClientMileage(repeat, cost, 0);
+			}
+			break;
+		case '2':
+			std::cout << "---------------------------------" << std::endl;
+			std::cout << "찾으려는 고객의 생년월일을 입력해주세요!!" << std::endl;
+			std::cout << "-> 메인으로 돌아가려면 \'m\'를 입력하세요" << std::endl;
+			while (repeat == -1)
+			{
+				std::cout << "\n";
+				std::cout << ">> ";
+				std::cin >> birthday;
+				if (birthday == "m")
+				{
+					repeat = 0;
+					continue;
+				}
+				std::cout << std::endl;
+				repeat = DB.FindClient(birthday);
+				std::cout << std::endl;
+				std::cout << "---------------------------------" << std::endl;
+				int cost = 0;
+				std::cout << "비용을 입력해주세요 >> ";
+				std::cin >> cost;
+				DB.ModifyClientMileage(repeat, cost, 1);
+			}
+			break;
+		default:
+			std::cout << "잘못된 선택입니다. 다시 시도하세요." << std::endl;
+			Sleep(1000);
+		}
+	}
+	ShowMenu();
 }
 
 void Display::ShowHistoryMenu()
