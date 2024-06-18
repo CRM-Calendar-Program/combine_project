@@ -28,7 +28,7 @@ int GetSize(string filename)
 
 int main()
 {
-    //system("python summaryGemini.py");  // 요약 최신화
+    system("python summaryGemini.py");  // 요약 최신화
 
     string filename = "people.csv";
     int size;
@@ -235,7 +235,7 @@ int main()
         window.display();
     }
     //==google calendar, summary gemini==
-    //system("python googleCalendar.py");
+    system("python googleCalendar.py");
     
     return 0;
 }

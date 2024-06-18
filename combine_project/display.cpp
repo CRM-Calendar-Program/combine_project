@@ -19,7 +19,7 @@ void Display::ShowMenu()
 	// std::cout << "4. 일정관리" << std::endl;
 
 	SetCursorPosition(0, 5);
-	std::cout << "---------오늘의 일정----------" << std::endl;
+	std::cout << "---------일정 요약----------" << std::endl;
 
 	SetCursorPosition(0, 6);
 	DailyMenu();

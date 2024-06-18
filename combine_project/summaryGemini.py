@@ -18,7 +18,7 @@ model = genai.GenerativeModel('gemini-1.5-flash-latest')
 
 
 def summarize_text(text):
-    response = model.generate_content(f"{text}\n\n위 내용을 요약해 줘.")
+    response = model.generate_content(f"{text}\n\n위 내용을 요약해 줘. 엔터로 구분해 줘. 간단한 설명도 덧붙여주고 조언도 해줘.")
     return response.text
 
 
