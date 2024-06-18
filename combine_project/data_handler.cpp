@@ -85,6 +85,11 @@ void DataHandler::ModifyClientMileage(int id, int cost, int type)
 	else std::cout << "Does not type" << std::endl;
 }
 
+void DataHandler::ModifyClientHistory(int id, std::string data)
+{
+	clients[id - 1].PutStringData(service_history, data);
+}
+
 void DataHandler::AddClient()
 {
 	std::string input;
