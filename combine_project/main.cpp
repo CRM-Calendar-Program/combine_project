@@ -35,6 +35,7 @@ int main()
     DataHandler DB(size);
     DB.ReadCSV(filename);
     Display display(DB);
+    display.ShowMenu();
     DB.WriteCSV(filename);
 
 //================================
