@@ -100,7 +100,7 @@ void Display::ShowClientMenu()
 			std::cout << "---------------------------------" << std::endl;
 			std::cout << "추가하려는 고객의 정보를 입력해주세요!!" << std::endl;
 			DB.AddClient();
-			ShowMenu();
+			break;
 		default:
 			std::cout << "잘못된 선택입니다. 다시 시도하세요." << std::endl;
 			Sleep(1000);
