@@ -22,7 +22,8 @@ void Display::ShowMenu()
 	std::cout << "---------오늘의 일정----------" << std::endl;
 
 	SetCursorPosition(0, 6);
-	// 오늘의 일정부분 출력
+	DailyMenu();	// -t
+	//Register();
 
 	char selection = 0;
 	while (true)
@@ -214,7 +215,18 @@ void Display::ShowHistoryMenu()
 
 void Display::DailyMenu()
 {
-	// 추가할 부분
+	std::string line;
+	std::ifstream file("summary.txt"); // summary 열기
+	if (file.is_open()) {
+		while (getline(file, line)) {
+			std::cout << line << std::endl;
+		}
+		file.close(); // 파일 닫기
+	}
+	else {
+		std::cout << "Unable to open file";
+	}
+	
 }
 
 void Display::Register()

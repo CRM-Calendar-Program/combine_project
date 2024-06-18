@@ -7,6 +7,7 @@
 #include <string>
 #include "data_handler.h"
 #include "client.h"
+#include <fstream>
 
 class Display
 {
