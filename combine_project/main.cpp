@@ -39,6 +39,7 @@ int main()
     DB.WriteCSV(filename);
 
 //================================
+    /*
 
     int currentDay, currentMonth, currentYear, firstWeekDayOfMonth, numberOfDays;
     vector<string> months = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
@@ -233,8 +234,8 @@ int main()
         window.display();
     }
     //==google calendar, summary gemini==
-    system("python googleCalendar.py");
-    system("python summaryGemini.py");
-
+    //system("python googleCalendar.py");
+    //system("python summaryGemini.py");
+    */
     return 0;
 }
