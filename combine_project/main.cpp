@@ -28,6 +28,8 @@ int GetSize(string filename)
 
 int main()
 {
+    //system("python summaryGemini.py");  // 요약 최신화
+
     string filename = "people.csv";
     int size;
 
@@ -39,8 +41,7 @@ int main()
     DB.WriteCSV(filename);
 
 //================================
-    /*
-
+    
     int currentDay, currentMonth, currentYear, firstWeekDayOfMonth, numberOfDays;
     vector<string> months = { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" };
     vector<string> weekDays = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat" };
@@ -235,7 +236,6 @@ int main()
     }
     //==google calendar, summary gemini==
     //system("python googleCalendar.py");
-    //system("python summaryGemini.py");
-    */
+    
     return 0;
 }

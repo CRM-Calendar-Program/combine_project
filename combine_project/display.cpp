@@ -22,7 +22,7 @@ void Display::ShowMenu()
 	std::cout << "---------¿À´ÃÀÇ ÀÏÁ¤----------" << std::endl;
 
 	SetCursorPosition(0, 6);
-	DailyMenu();	// -t
+	DailyMenu();
 	//Register();
 
 	char selection = 0;
